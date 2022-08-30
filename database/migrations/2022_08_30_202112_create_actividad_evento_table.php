@@ -16,8 +16,8 @@ class CreateActividadEventoTable extends Migration
         Schema::create('actividad_evento', function (Blueprint $table) {
             $table->id();
             $table->foreignId ('actividad_id')->references('id')->on('actividad');
-            $table->string ('fechaInicio');
-            $table->string ('fechaTermino');
+            $table->string ('fechaInicio', 255);
+            $table->string ('fechaTermino', 255);
             $table->timestamps();
         });
     }
