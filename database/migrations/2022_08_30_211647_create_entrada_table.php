@@ -19,7 +19,6 @@ class CreateEntradaTable extends Migration
             $table->string ('fecha_acceso');
             $table->foreignId ('item_id')->references('id')->on('item');
             $table->string ('estado', 255);
-            $table->timestamps();
         });
     }
 
