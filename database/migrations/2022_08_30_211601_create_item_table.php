@@ -13,9 +13,11 @@ class CreateItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('item', function (Blueprint $table) {
             $table->id();
-            $table->string ('nombre', 50);
+            $table->foreignId ('evento_id')->references('id')->on('actividad_evento');
+            $table->foreignId ('transaccion_id')->references('id')->on('transacion');
+            $table->integer ('cantidad', 11);
             $table->timestamps();
         });
     }
@@ -27,6 +29,7 @@ class CreateItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('item');
     }
 }
+
