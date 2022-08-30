@@ -16,8 +16,8 @@ class CreateItemTable extends Migration
         Schema::create('item', function (Blueprint $table) {
             $table->id();
             $table->foreignId ('evento_id')->references('id')->on('actividad_evento');
-            $table->foreignId ('transaccion_id')->references('id')->on('transacion');
-            $table->integer ('cantidad', 11);
+            $table->foreignId ('transaccion_id')->references('id')->on('transaccion');
+            $table->integer ('cantidad');
             $table->timestamps();
         });
     }
