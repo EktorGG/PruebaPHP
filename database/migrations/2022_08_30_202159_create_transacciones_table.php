@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaqueteTable extends Migration
+class CreateTransaccionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePaqueteTable extends Migration
      */
     public function up()
     {
-        Schema::create('paquete', function (Blueprint $table) {
+        Schema::create('transacciones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId ('item_id')->references('id')->on('item');
+            $table->integer ('total');
             $table->string ('estado', 255);
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreatePaqueteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paquete');
+        Schema::dropIfExists('transacciones');
     }
 }

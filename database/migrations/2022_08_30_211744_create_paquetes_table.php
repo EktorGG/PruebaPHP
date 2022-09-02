@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEntradaTable extends Migration
+class CreatePaquetesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateEntradaTable extends Migration
      */
     public function up()
     {
-        Schema::create('entrada', function (Blueprint $table) {
+        Schema::create('paquetes', function (Blueprint $table) {
             $table->id();
-            $table->string ('codigo', 255);
-            $table->string ('fecha_acceso');
-            $table->foreignId ('item_id')->references('id')->on('item');
+            $table->foreignId ('item_id')->references('id')->on('items');
             $table->string ('estado', 255);
             $table->timestamps();
         });
@@ -30,6 +28,6 @@ class CreateEntradaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entrada');
+        Schema::dropIfExists('paquetes');
     }
 }

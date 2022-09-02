@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransaccionTable extends Migration
+class CreateActividadesEventosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTransaccionTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaccion', function (Blueprint $table) {
+        Schema::create('actividades_eventos', function (Blueprint $table) {
             $table->id();
-            $table->integer ('total');
-            $table->string ('estado', 255);
+            $table->foreignId ('actividad_id')->references('id')->on('actividades');
+            $table->string ('fechaInicio', 255);
+            $table->string ('fechaTermino', 255);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTransaccionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaccion');
+        Schema::dropIfExists('actividades_eventos');
     }
 }
